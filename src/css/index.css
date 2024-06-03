@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap');
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+*{
+    transition: all 0.3s ease;
+}
+.active {
+    @apply text-[#F65D4E];
+}
+
+html{
+    font-family:  "Sora", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;;
+}
+
+.hover-parent:hover{
+    font-weight: bold;
+}
+.hover-parent:hover i:last-child{
+    transform: rotate(180deg);
+}
+.hover-parent .hover-child{
+    display: none;
+    font-weight: 500;
+    text-align: left;
+}
+.hover-parent:hover .hover-child{
+    display: block;
+}
+
+#hero-area {
+    height: 600px;
+    background-image: url("../images/hero-section.png");
+    background-repeat: no-repeat;
+    animation: animatedBackground 10s linear infinite alternate;
+    background-size: fit;
+    background-position: center center;
+    
+}
+
+
+.postion-style{
+    top: 90px;
+    z-index: 2;
+}
