@@ -178,7 +178,7 @@ function Root() {
               <li className="mx-5">
                 <NavLink
                   to="/about"
-                  className="block py-2 px-3 text-dark rounded  md:p-0 "
+                  className="block py-2 px-3 text-dark hover:text-[#F65D4E] rounded  md:p-0 "
                   activeClassName="active"
                   aria-current="page"
                 >
@@ -188,7 +188,7 @@ function Root() {
               <li className="mx-5">
                 <NavLink
                   to="/shop"
-                  className="block py-2 px-3 text-dark rounded  md:p-0 "
+                  className="block py-2 px-3 text-dark hover:text-[#F65D4E] rounded  md:p-0 "
                   activeClassName="active"
                   aria-current="page"
                 >
@@ -198,7 +198,7 @@ function Root() {
               <li className="mx-5">
                 <NavLink
                   to="/team"
-                  className="block py-2 px-3 text-dark rounded  md:p-0 "
+                  className="block py-2 px-3 text-dark hover:text-[#F65D4E] rounded  md:p-0 "
                   activeClassName="active"
                   aria-current="page"
                 >
@@ -208,7 +208,7 @@ function Root() {
               <li className="mx-5">
                 <NavLink
                   to="/contact"
-                  className="block py-2 px-3 text-dark rounded  md:p-0 "
+                  className="block py-2 px-3 text-dark hover:text-[#F65D4E] rounded  md:p-0 "
                   activeClassName="active"
                   aria-current="page"
                 >
@@ -218,7 +218,7 @@ function Root() {
               <li className="mx-5">
                 <NavLink
                   to="/news"
-                  className="block py-2 px-3 text-dark rounded  md:p-0 "
+                  className="block py-2 px-3 text-dark hover:text-[#F65D4E] rounded  md:p-0 "
                   activeClassName="active"
                   aria-current="page"
                 >
@@ -235,21 +235,21 @@ function Root() {
       <br />
       <br />
       <br />
-      <footer class="bg-[#282828] text-white">
-        <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
-          <div class="grid grid-cols-3 w-full ml-2 gap-8 sm:gap-6 sm:grid-cols-3">
-            <div class="mb-6 md:mb-0">
-              <a href="/" class="">
+      <footer className="bg-[#282828] w-screen text-white">
+        <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 w-full ml-2 gap-8 sm:gap-6 sm:grid-cols-3">
+            <div className="mb-6 md:mb-0">
+              <a href="/" className="">
                 <img
                   src={require("../images/logo.png")}
-                  class="h-44 me-3"
+                  className="h-44 me-3"
                   alt="FlowBite Logo"
                 />
                 <span className="text-[#F65D4E]">Akademnashr</span>
               </a>
               <br />
               <br />
-              <p className="text-gray-300">
+              <p className="text-gray-300 w-[60%]">
                 {" "}
                 Toshkent shahri, Chilonzor tumani So‘galli ota ko‘chasi 5- uy
               </p>
@@ -364,10 +364,12 @@ function Root() {
               </ul>
             </div>
           </div>
-          <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-        <center>
-            Akademnashr 2022. Barcha huquqlar himoyalangan.
-        </center>
+          <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+          <div className="md:w-full flex justify-center">
+            <p className="text-center">
+              Akademnashr 2022. Barcha huquqlar himoyalangan.
+            </p>            
+          </div>
         </div>
       </footer>
     </>

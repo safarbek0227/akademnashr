@@ -14,7 +14,13 @@
 }
 
 html{
+    overflow-x: hidden;
+    width: 100vw;
     font-family:  "Sora", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;;
+}
+#root{
+    overflow-x: hidden;
+    width: 100vw;
 }
 
 .hover-parent:hover{
@@ -36,7 +42,6 @@ html{
     height: 600px;
     background-image: url("../images/hero-section.png");
     background-repeat: no-repeat;
-    animation: animatedBackground 10s linear infinite alternate;
     background-size: fit;
     background-position: center center;
     
@@ -46,4 +51,37 @@ html{
 .postion-style{
     top: 90px;
     z-index: 2;
+}
+
+.action-button{
+    position: absolute;
+    top: 180px;
+    z-index: 15;
+    right: -20px;    
+}
+.action-button button{
+    opacity: 0;
+}
+.relative:hover .action-button{
+    right: 0;
+}
+.relative:hover .action-button button{
+    opacity: 1;
+}
+.action-button button{
+    background-color: #fefefe;
+}
+.action-button button:last-child{
+    transition: all 1.2s ease;
+}
+
+.a_bgsize{
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center center;
+    border-radius: 25px;
+}
+
+.a_bgsize:hover{
+    background-size: 105%;
 }
