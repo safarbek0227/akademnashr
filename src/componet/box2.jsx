@@ -15,10 +15,10 @@ export default function box(props) {
         </a>
         <p className="mb-3 font-semibold text-sm md:text-lg text-[#F65D4E]">UZS: 223,500</p>
       </div>
-      <div className="flex items-center gap-5 pl-3 wrap" >
+      <div className="flex items-center gap-5 pl-3 flex-wrap" >
           <button
             type="button my-6"
-            class="hover:text-[#F65D4E] hover:bg-white bg-[#F65D4E] text-white font-bold rounded-3xl text-sm px-5 py-3 me-2 mb-2"
+            class="hover:text-[#F65D4E] text-nowrap hover:bg-white bg-[#F65D4E] text-white font-bold rounded-3xl text-sm px-5 py-3 me-2 mb-2"
           >
             Xarid qilish<i class="fa-solid fa-chevron-right ml-5"></i>
           </button>

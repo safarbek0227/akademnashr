@@ -3,7 +3,12 @@ import { NavLink, Outlet, useLocation, useSearchParams } from "react-router-dom"
 
 function Root() {
   const [isNavbar, setNavbar] = useState(true);
+  const [isSearchBar, setSearchBar] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
+
+  useEffect(() => {
+    setNavbar(true);
+  },[useLocation()])
   return (
     <>
       <div className="flex bg-[#282828] py-3 text-white justify-between px-[15%]">
@@ -52,9 +57,9 @@ function Root() {
             className="w-[150px]"
           />
         </NavLink>
-        <div className="gap-5 items-center relative hidden xl:flex">
+        <div className={` ${!isSearchBar ? "hidden" : ""}  gap-5 items-center w-11/12 xl:w-auto shadow-xl xl:shadow-none fixed p-6 rounded-3xl bg-[#FAF5F3] xl:bg-white  xl:relative xl:flex`}>
           <button
-            className="hover-parent text-white bg-[#F65D4E] font-medium rounded-3xl text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mr-6"
+            className="hover-parent text-white bg-[#F65D4E] font-medium rounded-3xl text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mr-6 hidden xl:block"
             type="button"
           >
             <i className={`fa-light fa-ellipsis-stroke-vertical text-xl`}></i>
@@ -137,7 +142,11 @@ function Root() {
             </div>
           </button>
 
-          <form method="get" action="/shop/" onChange={(e) => e.submit} className="max-w-md min-w-[500px] flex w-full mx-auto bg-[#F6F6F6] py-3 px-5 rounded-3xl">
+          <form 
+            method="get"
+            action="/shop/"
+            onChange={(e) => e.submit}
+            className="max-w-md xl:min-w-[500px] flex w-full mx-auto bg-[#fff] xl:bg-[#F6F6F6] py-3 px-5 rounded-3xl">
             <input
               type="text"
               className="bg-transparent outline-none w-full"
@@ -383,6 +392,7 @@ function Root() {
           </NavLink>
           <button
             type="button"
+            onClick={() => setSearchBar((prev) => !prev)}
             className="inline-flex flex-col w-1/4  items-center justify-center px-5 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 group border-x dark:border-gray-600"
           >
             <i class="fa-solid fa-magnifying-glass text-2xl text-gray-500 group-hover:text-blue-600"></i>
