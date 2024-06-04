@@ -4,7 +4,7 @@ export default function box(props) {
       <a href="#">
         <img
           className="rounded-t-lg object-contain h-[250px] w-11/12 m-3 drop-shadow"
-          src={props.book.imageLinks.thumbnail}
+          src={props.book?.imageLinks?.smallThumbnail}
         />
       </a>
       <div className="p-5">

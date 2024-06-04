@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-import { NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
+import { NavLink, Outlet, useLocation, useSearchParams } from "react-router-dom";
 
 function Root() {
   const [isNavbar, setNavbar] = useState(true);
+  const [searchParams, setSearchParams] = useSearchParams();
   return (
     <>
       <div className="flex bg-[#282828] py-3 text-white justify-between px-[15%]">
@@ -42,7 +43,7 @@ function Root() {
       <div className="flex items-center justify-evenly">
         <i
           onClick={() => setNavbar((prev) => !prev)}
-          className="fa-solid fa-bars-sort text-3xl block xl:hidden absolute inset-x-5"
+          className="fa-solid fa-bars-staggered text-3xl block xl:hidden absolute inset-x-5"
         ></i>
         <NavLink to="/">
           <img
@@ -136,11 +137,13 @@ function Root() {
             </div>
           </button>
 
-          <form className="max-w-md min-w-[500px] flex w-full mx-auto bg-[#F6F6F6] py-3 px-5 rounded-3xl">
+          <form method="get" action="/shop/" onChange={(e) => e.submit} className="max-w-md min-w-[500px] flex w-full mx-auto bg-[#F6F6F6] py-3 px-5 rounded-3xl">
             <input
               type="text"
               className="bg-transparent outline-none w-full"
               placeholder="Izlash"
+              name="query"
+              defaultValue={searchParams.get("query") }
             />
             <i className="fa-solid fa-magnifying-glass text-xl"></i>
           </form>
@@ -160,7 +163,7 @@ function Root() {
         <div className="max-w-screen-xl flex flex-wrap items-center justify-center gap-6 mx-auto p-4">
           <div
             className={` ${
-              isNavbar ? "hidden"  : "block"
+              isNavbar ? "hidden" : "block"
             } w-full xl:block md:w-auto`}
             id="navbar-default"
           >
@@ -298,66 +301,42 @@ function Root() {
               <h3 className="text-lg">Menu</h3>
               <ul className="py-2 text-sm text-gray-500">
                 <li>
-                  <a
-                    href="#"
-                    className="block  py-2  "
-                  >
+                  <a href="#" className="block  py-2  ">
                     Ilmiy
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className="block py-2  "
-                  >
+                  <a href="#" className="block py-2  ">
                     Badiy
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className="block py-2  "
-                  >
+                  <a href="#" className="block py-2  ">
                     Ilmiy Ommabop
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className="block py-2  "
-                  >
+                  <a href="#" className="block py-2  ">
                     Bolalar adabiyoti
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className="block py-2  "
-                  >
+                  <a href="#" className="block py-2  ">
                     IT Kitoblar
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className="block py-2  "
-                  >
+                  <a href="#" className="block py-2  ">
                     Lug'atlar
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className="block py-2  "
-                  >
+                  <a href="#" className="block py-2  ">
                     O'quv qo'llanmalar
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className="block py-2  "
-                  >
+                  <a href="#" className="block py-2  ">
                     Tarixiy
                   </a>
                 </li>
@@ -368,10 +347,60 @@ function Root() {
           <div className="md:w-full flex justify-center">
             <p className="text-center">
               Akademnashr 2022. Barcha huquqlar himoyalangan.
-            </p>            
+            </p>
           </div>
         </div>
       </footer>
+
+      <div className="fixed lg:hidden bottom-0 left-0 z-50 w-full h-16 bg-white border-t border-gray-200 dark:bg-gray-700 dark:border-gray-600">
+        <div className="flex h-full w-full  mx-auto font-medium">
+          <NavLink
+            to="/"
+            className="inline-flex flex-col w-1/4  items-center justify-center px-5 border-gray-200 border-x hover:bg-gray-50 dark:hover:bg-gray-800 group dark:border-gray-600"
+          >
+            <svg
+              className="w-5 h-5 mb-2 text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z" />
+            </svg>
+            <span className="text-xs md:text-sm text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500">
+              Asosiy
+            </span>
+          </NavLink>
+          <NavLink
+            to={"/shop"}
+            type="button"
+            className="inline-flex flex-col w-1/4  items-center justify-center px-5 border-e border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 group dark:border-gray-600"
+          >
+            <i className="fa-solid fa-book-bookmark text-2xl text-gray-500 group-hover:text-blue-600"></i>
+            <span className="text-xs md:text-sm text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500">
+              Kitoblar
+            </span>
+          </NavLink>
+          <button
+            type="button"
+            className="inline-flex flex-col w-1/4  items-center justify-center px-5 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 group border-x dark:border-gray-600"
+          >
+            <i class="fa-solid fa-magnifying-glass text-2xl text-gray-500 group-hover:text-blue-600"></i>
+            <span className="text-xs md:text-sm text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500">
+              Qidiruv
+            </span>
+          </button>
+          <button
+            type="button"
+            className="inline-flex flex-col  w-1/4 items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group"
+          >
+            <i class="fa-regular fa-heart text-2xl text-gray-500 group-hover:text-blue-600"></i>
+            <span className="text-xs md:text-sm text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500">
+              Istaklar ro'yhati
+            </span>
+          </button>
+        </div>
+      </div>
     </>
   );
 }

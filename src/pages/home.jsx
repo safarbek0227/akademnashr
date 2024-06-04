@@ -3,7 +3,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import axios from "axios";
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { FreeMode, Pagination } from "swiper/modules";
+import { FreeMode, Pagination, Autoplay } from "swiper/modules";
 import Box from "../componet/box";
 import CardBook from "../componet/cardBook";
 import ScienceCard from "../componet/scienceCard";
@@ -103,7 +103,11 @@ function Home() {
           }}
           freeMode={true}
           loop={true}
-          modules={[FreeMode, Pagination]}
+          modules={[FreeMode, Pagination, Autoplay]}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
           className="mySwiper"
         >
           {books?.map((item, index) => (
@@ -166,7 +170,11 @@ function Home() {
           }}
           freeMode={true}
           loop={true}
-          modules={[FreeMode, Pagination]}
+          modules={[FreeMode, Pagination, Autoplay]}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
           className="mySwiper"
         >
           {popularScience?.map((item, index) => (
@@ -259,7 +267,11 @@ function Home() {
           }}
           freeMode={true}
           loop={true}
-          modules={[FreeMode, Pagination]}
+          modules={[FreeMode, Pagination, Autoplay]}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
           className="mySwiper"
         >
           <SwiperSlide>
@@ -342,6 +354,62 @@ function Home() {
                 {books?.slice(1, 5).map((item, index) => (
                   <CardBook book={item} key={`p${index}`} />
                 ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <br />
+      <br />
+      <section>
+        <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-6">
+          <div className="grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+            <div className="p-8 text-left items-center gap-5 border border-gray rounded-xl flex">
+              <button
+                type="button"
+                class="text-gray bg-[#EDEBFC] text-[#7261D4] border rounded-full text-4xl p-4 text-center inline-flex items-center"
+              >
+                <i class="fa-regular fa-book"></i>
+              </button>
+              <div>
+                <h3 className="text-xl font-semibold">15,254</h3>
+                <h4 className="text-lg text-gray-500">Jami Kitoblar</h4>
+              </div>
+            </div>
+            <div className="p-8 text-left items-center gap-5 border border-gray rounded-xl flex">
+              <button
+                type="button"
+                class="text-gray bg-[#E9F9FD] text-[#4DC1DB] border rounded-full text-4xl p-4 text-center inline-flex items-center"
+              >
+                <i class="fa-regular fa-people-simple"></i>
+              </button>
+              <div>
+                <h3 className="text-xl font-semibold">1,287</h3>
+                <h4 className="text-lg text-gray-500">MUALLIFLAR</h4>
+              </div>
+            </div>
+            <div className="p-8 text-left items-center gap-5 border border-gray rounded-xl flex">
+              <button
+                type="button"
+                class="text-gray bg-[#E8F6E1] text-[#72C949] border rounded-full text-4xl p-4 text-center inline-flex items-center"
+              >
+                <i class="fa-regular fa-book"></i>
+              </button>
+              <div>
+                <h3 className="text-xl font-semibold">7,589</h3>
+                <h4 className="text-lg text-gray-500">KITOBLAR SOTILGAN</h4>
+              </div>
+            </div>
+            <div className="p-8 text-left items-center gap-5 border border-gray rounded-xl flex">
+              <button
+                type="button"
+                class="text-gray bg-[#FBF1E6] text-[#FA8C17] border rounded-full text-4xl p-4 text-center inline-flex items-center"
+              >
+                <i class="fa-regular fa-face-smile"></i>
+              </button>
+              <div>
+                <h3 className="text-xl font-semibold">97%</h3>
+                <h4 className="text-lg text-gray-500">BAXTLI MIJOZLAR</h4>
               </div>
             </div>
           </div>

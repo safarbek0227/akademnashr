@@ -85,3 +85,11 @@ html{
 .a_bgsize:hover{
     background-size: 105%;
 }
+
+.shape-img {
+    transform: all 5s ease !important;
+    border-radius: 125px 125px 125px 40px;;
+}
+.shape-img:hover{
+    transform: scale(1.2);
+}
