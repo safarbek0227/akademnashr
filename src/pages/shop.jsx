@@ -34,7 +34,11 @@ export default function Shop(params) {
             (value, index) => index
           )
         );
-        setBooks(res.data.items?.map((items) => items.volumeInfo));
+        setBooks(res.data.items?.map((items) => {
+
+          let newobj = {...items.volumeInfo, id: items.id}
+          return newobj
+        } ));
       });
   }, [useLocation, pagination, pages, orderType, subject, searchParams]);
 
@@ -99,12 +103,12 @@ export default function Shop(params) {
               <hr />
               <div className="flex flex-col items-center mt-8 pt-8">
                 <nav aria-label="Page navigation example">
-                  <ul class="flex items-center -space-x-px h-8 text-sm">
+                  <ul className="flex items-center -space-x-px h-8 text-sm">
                     {pagesL?.slice(0, 7).map((item) => (
                       <li>
                         <button
                           onClick={() => setPages(item)}
-                          class={`${
+                          className={`${
                             pages == item && "bg-[#6852ED] text-white"
                           } flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white`}
                         >
@@ -120,7 +124,7 @@ export default function Shop(params) {
               <div className="bg-gray border rounded-xl p-8 mx-8">
                 <h3 className="text-xl">Kategoriyalar</h3>
                 <hr />
-                <ul class="max-w-md space-y-1 mt-8  cursor-pointer text-gray-500 list-disc list-inside dark:text-gray-400">
+                <ul className="max-w-md space-y-1 mt-8  cursor-pointer text-gray-500 list-disc list-inside dark:text-gray-400">
                     <li 
                         onClick={() => setSubject("Fantasy")}
                         className={`${subject == "Fantasy" && "text-[#F65D4E]"}`}

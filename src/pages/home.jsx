@@ -27,7 +27,16 @@ function Home() {
         },
       })
       .then((res) => {
-        setBooks(res.data.items.map((items) => items.volumeInfo));
+        setBooks(res.data.items.map((items) => {
+
+          let newobj = {...items.volumeInfo, 
+              id: items.id, 
+              price: items.saleInfo.listPrice ? items.saleInfo.listPrice.amount : "",
+              currencyCode: items.saleInfo.listPrice ? items.saleInfo.listPrice.currencyCode : "Sotilmaydi"
+            }
+          return newobj
+        } ));
+        // setBooks(null)
       });
     axios
       .get(`https://www.googleapis.com/books/v1/volumes`, {
@@ -37,7 +46,14 @@ function Home() {
         },
       })
       .then((res) => {
-        setPopularScience(res.data.items.map((items) => items.volumeInfo));
+        setPopularScience(res.data.items.map((items) => {
+          let newobj = {...items.volumeInfo, 
+            id: items.id, 
+            price: items.saleInfo.listPrice ? items.saleInfo.listPrice.amount : "",
+            currencyCode: items.saleInfo.listPrice ? items.saleInfo.listPrice.currencyCode : "Sotilmaydi"
+          }
+          return newobj
+        } ));
       });
   }, [useLocation]);
   return (
@@ -160,11 +176,11 @@ function Home() {
               spaceBetween: 40,
             },
             1024: {
-              slidesPerView: 3,
+              slidesPerView: 2,
               spaceBetween: 50,
             },
             1444: {
-              slidesPerView: 2.5,
+              slidesPerView: 2,
               spaceBetween: 30,
             },
           }}

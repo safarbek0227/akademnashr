@@ -6,6 +6,7 @@ import About from "./pages/about.jsx"
 import Team from "./pages/team.jsx"
 import Contact from "./pages/contact.jsx"
 import Shop from "./pages/shop.jsx"
+import ShopDetail from "./pages/shopdetail.jsx"
 import "./css/index.css"
 
 
@@ -35,6 +36,11 @@ const router = createBrowserRouter([
                     path: "shop/",
                     errorElement: <ErrorPage />,
                     element: <Shop/>,
+                },
+                {
+                    path: "shop/:id",
+                    errorElement: <ErrorPage />,
+                    element: <ShopDetail/>,
                 },
                 {
                     path: "team/",

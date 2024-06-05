@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 export default function box(props) {
   return (
     <div className="max-w-sm my-2 relative bg-white border-r-2 border-gray-200  dark:bg-gray-800 dark:border-gray-700">
@@ -9,11 +10,17 @@ export default function box(props) {
       </a>
       <div className="p-5">
         <a href="#">
-          <h5 className="mb-2 text-sm md:text-lg font-bold truncate tracking-tight text-gray-900 dark:text-white">
-            {props.book.title}
-          </h5>
+          <NavLink
+            to={`/shop/${props.book.id}`} 
+            className=""
+            >
+              <h5 
+                  className="mb-2 hover:text-[#F65D4E] text-sm md:text-lg font-bold truncate tracking-tight text-gray-900 dark:text-white">
+                {props.book.title}
+              </h5>
+          </NavLink>
         </a>
-        <p className="mb-3 font-semibold text-sm md:text-lg text-[#F65D4E]">UZS: 223,500</p>
+        <p className="mb-3 font-semibold text-sm md:text-lg text-[#F65D4E]">{props.book.currencyCode}: {props.book.price}</p>
       </div>
       <div className="action-button ">
         <div className="flex flex-col w-max gap-3">

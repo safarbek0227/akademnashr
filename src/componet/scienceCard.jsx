@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 export default function ScienceCard(props) {
     return (
      
@@ -8,10 +9,18 @@ export default function ScienceCard(props) {
         >
         <img 
             className="object-contain col-span-2 m-2 w-full rounded-t-lg h-96 md:w-48 md:rounded-none md:rounded-s-lg" 
-            src={props.book.imageLinks.thumbnail} alt="" />
+            src={props.book.imageLinks?.thumbnail} alt="" />
         <div className="flex flex-col col-span-2 justify-between p-4 leading-normal">
-            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{props.book.title.slice(0,50)}</h5>
-            <p className="mb-3 font-semibold text-sm md:text-xl text-[#F65D4E]">UZS: 223,500</p>
+            <NavLink
+                to={`/shop/${props.book.id}`}
+                >
+                <h5 
+                    className="mb-2 text-xl hover:text-[#F65D4E] font-bold tracking-tight text-gray-900 dark:text-white">
+                        {props.book.title.slice(0,50)}
+                </h5>
+
+            </NavLink>
+            <p className="mb-3 font-semibold text-sm md:text-lg text-[#F65D4E]">{props.book.currencyCode}: {props.book.price}</p>
         </div>
     </div>
 

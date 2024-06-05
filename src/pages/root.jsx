@@ -395,7 +395,7 @@ function Root() {
             onClick={() => setSearchBar((prev) => !prev)}
             className="inline-flex flex-col w-1/4  items-center justify-center px-5 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 group border-x dark:border-gray-600"
           >
-            <i class="fa-solid fa-magnifying-glass text-2xl text-gray-500 group-hover:text-blue-600"></i>
+            <i className="fa-solid fa-magnifying-glass text-2xl text-gray-500 group-hover:text-blue-600"></i>
             <span className="text-xs md:text-sm text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500">
               Qidiruv
             </span>
@@ -404,7 +404,7 @@ function Root() {
             type="button"
             className="inline-flex flex-col  w-1/4 items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group"
           >
-            <i class="fa-regular fa-heart text-2xl text-gray-500 group-hover:text-blue-600"></i>
+            <i className="fa-regular fa-heart text-2xl text-gray-500 group-hover:text-blue-600"></i>
             <span className="text-xs md:text-sm text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500">
               Istaklar ro'yhati
             </span>

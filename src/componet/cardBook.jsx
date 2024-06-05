@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 export default function CardBook(props) {
     return (
      
@@ -8,11 +9,15 @@ export default function CardBook(props) {
         />
         <div className="flex col-span-3 flex-col justify-between p-4 leading-normal">
         <a href="#" className="w-full">
-          <h5 className="mb-2 text-sm md:text-xl turrance font-bold tracking-tight text-gray-900 dark:text-white">
-            {props.book.title}
-          </h5>
+          <NavLink
+              to={`/shop/${props.book.id}`}
+              >
+              <h5 className="mb-2 hover:text-[#F65D4E] text-sm md:text-xl turrance font-bold tracking-tight text-gray-900 dark:text-white">
+                {props.book.title}
+              </h5>
+          </NavLink>
         </a>
-        <p className="mb-3 font-semibold text-sm md:text-xl text-[#F65D4E]">UZS: 223,500</p>
+        <p className="mb-3 font-semibold text-sm md:text-lg text-[#F65D4E]">{props.book.currencyCode}: {props.book.price}</p>
         </div>
     </div>
 
