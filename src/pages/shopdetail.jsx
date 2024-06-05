@@ -84,7 +84,7 @@ export default function Shop(params) {
                       <ul>
                         <li className="my-4"><b>Muallif:</b> {book?.authors[0]}</li>
                         <li className="my-4"><b>hajmi:</b> {book?.printedPageCount} bet</li>
-                        <li className="my-4"><b>Yili:</b> {book?.publishedDate} bet</li>
+                        <li className="my-4"><b>Yili:</b> {book?.publishedDate}</li>
                       </ul>
                       <p dangerouslySetInnerHTML={{ __html: book?.description }} />
                       
