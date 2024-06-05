@@ -76,8 +76,8 @@ export default function Shop(params) {
               </div>
               <br />
               <div className="flex md:items-center pt-0 px-8 border-2 rounded-3xl border-gray wrap flex-col md:flex-row gap-2">
-                  <div className="flex justify-center ">
-                    <div className="md:hidden xl:flex items-center  border-r-2  xl:min-w-[100px] h-auto px-0 py-8">
+                  <div className="flex flex-wrap md:flex-nowrap justify-center ">
+                    <div className="items-center flex border-b-2 w-full text-center  md:border-r-2  md:min-w-[100px] h-auto px-0 py-8">
                       <h1 className="text-xl">Tasnif</h1>
                     </div>
                     <div className="w-auto p-6">

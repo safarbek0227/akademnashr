@@ -22,9 +22,9 @@ export default function CardBook(props) {
         <div className="flex items-center gap-5" >
           <button
             type="button my-6"
-            className="hover:text-[#F65D4E] border-2 border-[#F65D4E] hover:bg-white bg-[#F65D4E] text-white font-bold rounded-3xl text-sm px-5 py-3 me-2 mb-2"
+            className="hover:text-[#F65D4E] border-2 border-[#F65D4E] hover:bg-white bg-[#F65D4E] text-white font-bold rounded-3xl text-sm px-2 md:px-5 py-3 me-2 mb-2"
           >
-            Xarid qilish<i className="fa-solid fa-chevron-right ml-5"></i>
+            Xarid qilish<i className="fa-solid fa-chevron-right ml-2 md:ml-5"></i>
           </button>
           <button
             type="button"
