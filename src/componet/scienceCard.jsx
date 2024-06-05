@@ -9,7 +9,7 @@ export default function ScienceCard(props) {
         >
         <img 
             className="object-contain col-span-2 m-2 w-full rounded-t-lg h-96 md:w-48 md:rounded-none md:rounded-s-lg" 
-            src={props.book.imageLinks?.thumbnail} alt="" />
+            src={props.book?.imageLinks?.thumbnail} alt="" />
         <div className="flex flex-col col-span-2 justify-between p-4 leading-normal">
             <NavLink
                 to={`/shop/${props.book.id}`}

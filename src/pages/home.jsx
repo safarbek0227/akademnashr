@@ -23,6 +23,7 @@ function Home() {
         params: {
           q: "subject:fiction",
           max_results: 11,
+          filter: "paid-ebooks",
           API_KEY: "AIzaSyC4yceaVm_HLVyo9aSRzUmj6BlmvKdU8ks",
         },
       })
@@ -42,6 +43,7 @@ function Home() {
       .get(`https://www.googleapis.com/books/v1/volumes`, {
         params: {
           q: "subject:Popular science",
+          // filter: "paid-ebooks",
           API_KEY: "AIzaSyC4yceaVm_HLVyo9aSRzUmj6BlmvKdU8ks",
         },
       })

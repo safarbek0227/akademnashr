@@ -23,13 +23,13 @@ export default function box(props) {
       <div className="flex items-center gap-5 pl-3 flex-wrap" >
           <button
             type="button my-6"
-            className="hover:text-[#F65D4E] text-nowrap hover:bg-white bg-[#F65D4E] text-white font-bold rounded-3xl text-sm px-5 py-3 me-2 mb-2"
+            className="hover:text-[#F65D4E] border-2 border-[#F65D4E] text-nowrap hover:bg-white bg-[#F65D4E] text-white font-bold rounded-3xl text-sm px-5 py-3 me-2 mb-2"
           >
             Xarid qilish<i className="fa-solid fa-chevron-right ml-5"></i>
           </button>
           <button
             type="button"
-            className="text-gray border hover:bg-[#F65D4E] hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-xl p-2.5 text-center inline-flex items-center"
+            className="text-gray border hover:bg-[#F65D4E] hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-xl p-2.5 text-center inline-flex items-center "
           >
             <i className="fa-regular fa-heart"></i>
           </button>

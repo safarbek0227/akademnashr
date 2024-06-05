@@ -23,6 +23,7 @@ export default function Shop(params) {
           q: searchParams.get("query") ? searchParams.get("query") : "+terms" + "+subject:" + subject,
           maxResults: pagination,
           startIndex: pages * pagination,
+          filter: "paid-ebooks",
           orderBy: orderType,
           API_KEY: "AIzaSyC4yceaVm_HLVyo9aSRzUmj6BlmvKdU8ks",
         },
@@ -30,13 +31,17 @@ export default function Shop(params) {
       .then((res) => {
         setPagesL(
           Array.from(
-            { length: parseInt(res.data.totalItems) / pagination },
+            { length: (parseInt(res.data.totalItems) / pagination ) -1},
             (value, index) => index
           )
         );
         setBooks(res.data.items?.map((items) => {
 
-          let newobj = {...items.volumeInfo, id: items.id}
+          let newobj = {...items.volumeInfo, 
+            id: items.id, 
+            price: items.saleInfo.listPrice ? items.saleInfo.listPrice.amount : "",
+            currencyCode: items.saleInfo.listPrice ? items.saleInfo.listPrice.currencyCode : "Sotilmaydi"
+          }
           return newobj
         } ));
       });
