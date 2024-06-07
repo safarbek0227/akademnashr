@@ -37,7 +37,7 @@ export default function Team(params) {
         <h3 className="text-lg my-2"><i className="fa-solid fa-envelope mr-4 text-[#6852ED]"></i> info@akademnashr.uz</h3>
       </div>
       <section className="px-8">
-      <iframe className="w-full min-h-[600px]" loading="lazy" data-src="https://maps.google.com/maps?q=41.260094%2C%2069.190435&amp;t=m&amp;z=15&amp;output=embed&amp;iwloc=near" title="41.260094, 69.190435" aria-label="41.260094, 69.190435" src="https://maps.google.com/maps?q=41.260094%2C%2069.190435&amp;t=m&amp;z=15&amp;output=embed&amp;iwloc=near" class=" lazyloaded" data-load-mode="1"></iframe>
+      <iframe className="w-full min-h-[600px]" loading="lazy" data-src="https://maps.google.com/maps?q=41.260094%2C%2069.190435&amp;t=m&amp;z=15&amp;output=embed&amp;iwloc=near" title="41.260094, 69.190435" aria-label="41.260094, 69.190435" src="https://maps.google.com/maps?q=41.260094%2C%2069.190435&amp;t=m&amp;z=15&amp;output=embed&amp;iwloc=near" className=" lazyloaded" data-load-mode="1"></iframe>
       </section>
 
     </>

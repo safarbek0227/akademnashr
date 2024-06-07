@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { NavLink, Outlet, useLocation, useSearchParams } from "react-router-dom";
+import "../css/index.css"
 
 function Root() {
   const [isNavbar, setNavbar] = useState(true);
@@ -171,17 +172,14 @@ function Root() {
       <nav className="bg-white border-gray-200 dark:bg-gray-900">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-center gap-6 mx-auto p-4">
           <div
-            className={` ${
-              isNavbar ? "hidden" : "block"
-            } w-full xl:block md:w-auto`}
+            className={(isNavbar ? "hidden " : "block ") + `w-full xl:block md:w-auto`}
             id="navbar-default"
           >
             <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
               <li className="mx-5">
                 <NavLink
                   to="/"
-                  className="block py-2 px-3 text-dark rounded  md:p-0 "
-                  activeClassName="active"
+                   className={({isActive}) => (isActive ? "active " : ' ') +"block py-2 px-3 text-dark rounded  md:p-0"}
                   aria-current="page"
                 >
                   Asosiy
@@ -190,8 +188,7 @@ function Root() {
               <li className="mx-5">
                 <NavLink
                   to="/about"
-                  className="block py-2 px-3 text-dark hover:text-[#F65D4E] rounded  md:p-0 "
-                  activeClassName="active"
+                  className={({isActive}) => (isActive ? "active " : ' ') +"block py-2 px-3 text-dark rounded  md:p-0"}
                   aria-current="page"
                 >
                   Biz haqimizda
@@ -200,8 +197,7 @@ function Root() {
               <li className="mx-5">
                 <NavLink
                   to="/shop"
-                  className="block py-2 px-3 text-dark hover:text-[#F65D4E] rounded  md:p-0 "
-                  activeClassName="active"
+                  className={({isActive}) => (isActive ? "active " : ' ') +"block py-2 px-3 text-dark rounded  md:p-0"}
                   aria-current="page"
                 >
                   Kitoblar
@@ -210,8 +206,7 @@ function Root() {
               <li className="mx-5">
                 <NavLink
                   to="/team"
-                  className="block py-2 px-3 text-dark hover:text-[#F65D4E] rounded  md:p-0 "
-                  activeClassName="active"
+                  className={({isActive}) => (isActive ? "active " : ' ') +"block py-2 px-3 text-dark rounded  md:p-0"}
                   aria-current="page"
                 >
                   Jamoa
@@ -220,8 +215,7 @@ function Root() {
               <li className="mx-5">
                 <NavLink
                   to="/contact"
-                  className="block py-2 px-3 text-dark hover:text-[#F65D4E] rounded  md:p-0 "
-                  activeClassName="active"
+                  className={({isActive}) => (isActive ? "active " : ' ') +"block py-2 px-3 text-dark rounded  md:p-0"}
                   aria-current="page"
                 >
                   Bog'lanish
@@ -230,8 +224,7 @@ function Root() {
               <li className="mx-5">
                 <NavLink
                   to="/news"
-                  className="block py-2 px-3 text-dark hover:text-[#F65D4E] rounded  md:p-0 "
-                  activeClassName="active"
+                  className={({isActive}) => (isActive ? "active " : ' ') +"block py-2 px-3 text-dark rounded  md:p-0"}
                   aria-current="page"
                 >
                   Yangiliklar

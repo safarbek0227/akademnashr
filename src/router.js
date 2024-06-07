@@ -1,5 +1,6 @@
 import * as React from "react";
 import Root from "./pages/root.jsx"
+import Base from "./pages/dashboard/base.jsx"
 import ErrorPage from "./pages/errorpage.jsx"
 import Home from "./pages/home.jsx"
 import About from "./pages/about.jsx"
@@ -7,7 +8,7 @@ import Team from "./pages/team.jsx"
 import Contact from "./pages/contact.jsx"
 import Shop from "./pages/shop.jsx"
 import ShopDetail from "./pages/shopdetail.jsx"
-import "./css/index.css"
+
 
 
 import {
@@ -59,6 +60,16 @@ const router = createBrowserRouter([
             ]
         }
     ],
+  },
+  {
+    path: "/dashboard",
+    element: <Base />,
+    children: [
+        {
+            path: "*",
+            element: <></>,
+        }
+    ]
   },
 ]);
 

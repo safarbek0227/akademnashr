@@ -50,7 +50,7 @@ export default function Shop(params) {
                       <img src={book?.imageLinks?.thumbnail} className="w-full rounded-lg h-auto" alt="" />
                     </div>
                     <div className="w-auto">
-                      <span class="bg-green-100 text-green-800 text-md   font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Sotuvda mavjud</span>
+                      <span className="bg-green-100 text-green-800 text-md   font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Sotuvda mavjud</span>
                       <br /><br />
                       <h1 className="font-semibold text-2xl xl:text-3xl">«{ book?.title}»</h1>
                       <hr />
@@ -65,11 +65,11 @@ export default function Shop(params) {
                           <span className="p-3">2</span>
                           <span className="p-3 cursor-pointer rounded-r-3xl hover:text-white hover:bg-[#F65D4E]">+</span>
                         </div>
-                        <button type="button" class="text-white bg-[#F65D4E] font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 hover:bg-[#FF5D4E] dark:focus:ring-red-900"><i class="fa-sharp fa-solid fa-basket-shopping-simple mx-3"></i> Savatga qo'shish</button>
+                        <button type="button" className="text-white bg-[#F65D4E] font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 hover:bg-[#FF5D4E] dark:focus:ring-red-900"><i className="fa-sharp fa-solid fa-basket-shopping-simple mx-3"></i> Savatga qo'shish</button>
 
                       </div>
                       <br />
-                      <h3><i class="fa-regular fa-heart mx-3"></i> istaklar ro'yxatiga qo'shing</h3>
+                      <h3><i className="fa-regular fa-heart mx-3"></i> istaklar ro'yxatiga qo'shing</h3>
                     </div>
                   </div>
                 <div className="flex-1 border-b-1 border-gray"></div>
@@ -77,7 +77,7 @@ export default function Shop(params) {
               <br />
               <div className="flex md:items-center pt-0 px-8 border-2 rounded-3xl border-gray wrap flex-col md:flex-row gap-2">
                   <div className="flex flex-wrap md:flex-nowrap justify-center ">
-                    <div className="items-center flex border-b-2 w-full text-center  md:border-r-2  md:min-w-[100px] h-auto px-0 py-8">
+                    <div className="items-center flex border-b-2 w-full text-center  md:border-r-2  md:max-w-[80px] h-auto px-0 py-8">
                       <h1 className="text-xl">Tasnif</h1>
                     </div>
                     <div className="w-auto p-6">

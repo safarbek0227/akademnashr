@@ -9,15 +9,13 @@ export default function box(props) {
         />
       </a>
       <div className="p-5">
-        <a href="#">
         <NavLink
-                to={`/shop/${props.book.id}`}
-                >
+          to={`/shop/${props.book.id}`}
+          >
           <h5 className="mb-2 text-sm md:text-lg font-bold truncate tracking-tight text-gray-900 dark:text-white">
             {props.book.title}
           </h5>              
         </NavLink>
-        </a>
         <p className="mb-3 font-semibold text-sm md:text-lg text-[#F65D4E]">{props.book.currencyCode}: {props.book.price}</p>
       </div>
       <div className="flex items-center gap-5 pl-3 flex-wrap" >

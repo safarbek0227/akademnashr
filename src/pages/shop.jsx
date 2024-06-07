@@ -36,7 +36,6 @@ export default function Shop(params) {
           )
         );
         setBooks(res.data.items?.map((items) => {
-
           let newobj = {...items.volumeInfo, 
             id: items.id, 
             price: items.saleInfo.listPrice ? items.saleInfo.listPrice.amount : "",

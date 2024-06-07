@@ -73,10 +73,10 @@ export default function about(params) {
                 <h3 className="my-4">Dasturni yuklab oling</h3>
                 <button
                     type="button my-6"
-                    class="hover:text-[#F65D4E] hover:bg-white bg-[#F65D4E] text-white font-bold rounded-3xl text-sm px-5 py-3 me-2 mb-2"
+                    className="hover:text-[#F65D4E] hover:bg-white bg-[#F65D4E] text-white font-bold rounded-3xl text-sm px-5 py-3 me-2 mb-2"
                 >
                     Xarid qilish 
-                <i class="fa-solid fa-chevron-right ml-5"></i>
+                <i className="fa-solid fa-chevron-right ml-5"></i>
                 </button>
             </div>
             <div>

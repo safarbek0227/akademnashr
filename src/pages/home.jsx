@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import axios from "axios";
-import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Pagination, Autoplay } from "swiper/modules";
+import fetchBooks from "../api.js";
 import Box from "../componet/box";
 import CardBook from "../componet/cardBook";
 import ScienceCard from "../componet/scienceCard";
@@ -18,52 +18,56 @@ function Home() {
   const [popularScience, setPopularScience] = useState(null);
 
   useEffect(() => {
-    axios
-      .get(`https://www.googleapis.com/books/v1/volumes`, {
-        params: {
-          q: "subject:fiction",
-          max_results: 11,
-          filter: "paid-ebooks",
-          API_KEY: "AIzaSyC4yceaVm_HLVyo9aSRzUmj6BlmvKdU8ks",
-        },
-      })
-      .then((res) => {
-        setBooks(res.data.items.map((items) => {
+    fetchBooks("subject:fiction", 10, "paid-ebooks")
+    .then((res) => {
+      setBooks(
+        res?.items.map((items) => {
+          let newobj = {
+            ...items.volumeInfo,
+            id: items.id,
+            price: items.saleInfo.listPrice
+              ? items.saleInfo.listPrice.amount
+              : "",
+            currencyCode: items.saleInfo.listPrice
+              ? items.saleInfo.listPrice.currencyCode
+              : "Sotilmaydi",
+          };
+          return newobj;
+        })
+      )
+    })
+    .catch((error) => {
+      console.error("Error fetching books:", error);
+    });
 
-          let newobj = {...items.volumeInfo, 
-              id: items.id, 
-              price: items.saleInfo.listPrice ? items.saleInfo.listPrice.amount : "",
-              currencyCode: items.saleInfo.listPrice ? items.saleInfo.listPrice.currencyCode : "Sotilmaydi"
-            }
-          return newobj
-        } ));
-        // setBooks(null)
-      });
-    axios
-      .get(`https://www.googleapis.com/books/v1/volumes`, {
-        params: {
-          q: "subject:Popular science",
-          // filter: "paid-ebooks",
-          API_KEY: "AIzaSyC4yceaVm_HLVyo9aSRzUmj6BlmvKdU8ks",
-        },
-      })
-      .then((res) => {
-        setPopularScience(res.data.items.map((items) => {
-          let newobj = {...items.volumeInfo, 
-            id: items.id, 
-            price: items.saleInfo.listPrice ? items.saleInfo.listPrice.amount : "",
-            currencyCode: items.saleInfo.listPrice ? items.saleInfo.listPrice.currencyCode : "Sotilmaydi"
-          }
-          return newobj
-        } ));
-      });
+
+    fetchBooks("subject:science", 10, "ebooks")
+    .then((res) => {
+      console.log(res.items);
+      setPopularScience(
+        res?.items.map((items) => {
+          let newobj = {
+            ...items.volumeInfo,
+            id: items.id,
+            price: items.saleInfo.listPrice
+              ? items.saleInfo.listPrice.amount
+              : "",
+            currencyCode: items.saleInfo.listPrice
+              ? items.saleInfo.listPrice.currencyCode
+              : "Sotilmaydi",
+          };
+          return newobj;
+        })
+      )
+    })
+
   }, [useLocation]);
   return (
     <>
       <section className=" mt-4" id="hero-area">
         <div className="flex h-full items-center justify-end mx-[15%]">
           <div className="relative">
-            <p class="text-center">akademnashr</p>
+            <p className="text-center">akademnashr</p>
             <h1 className="relative z-10 font-bold leading-normal text-4xl md:leading-normal md:text-5xl">
               Siz Izlayotgan <br /> Kitoblar Shu Yerda{" "}
             </h1>
@@ -87,7 +91,7 @@ function Home() {
               className="text-white w-max text-nowrap flex items-center bg-[#F65D4E] text-[15px] font-medium rounded-full text-sm px-6 py-4 text-center me-2 mb-2"
             >
               Ko'proq Ko'rish
-              <i class="fa-solid fa-chevron-right ml-5 text-[15px]"></i>
+              <i className="fa-solid fa-chevron-right ml-5 text-[15px]"></i>
             </NavLink>
           </div>
         </div>
@@ -139,7 +143,7 @@ function Home() {
       <section className="w-screen my-6">
         <div className="mx-6 md:mx-[15%] mt-6">
           {books?.slice(0, 3).map((item, index) => (
-            <CardBook book={item} key={`p${index}`} />
+            <CardBook book={item} key={`p-${index}`} />
           ))}
         </div>
       </section>
@@ -155,7 +159,7 @@ function Home() {
               className="text-white w-max text-nowrap flex items-center bg-[#F65D4E] text-[15px] font-medium rounded-full text-sm px-6 py-4 text-center me-2 mb-2"
             >
               Ko'proq Ko'rish
-              <i class="fa-solid fa-chevron-right ml-5 text-[15px]"></i>
+              <i className="fa-solid fa-chevron-right ml-5 text-[15px]"></i>
             </NavLink>
           </div>
         </div>
@@ -197,7 +201,7 @@ function Home() {
         >
           {popularScience?.map((item, index) => (
             <SwiperSlide key={`a ${index}`}>
-              <ScienceCard book={item} index={index} />
+              <ScienceCard book={item} />
             </SwiperSlide>
           ))}
         </Swiper>
@@ -212,7 +216,7 @@ function Home() {
               className="text-white w-max text-nowrap flex items-center bg-[#F65D4E] text-[15px] font-medium rounded-full text-sm px-6 py-4 text-center me-2 mb-2"
             >
               Ko'proq Ko'rish
-              <i class="fa-solid fa-chevron-right ml-5 text-[15px]"></i>
+              <i className="fa-solid fa-chevron-right ml-5 text-[15px]"></i>
             </NavLink>
           </div>
         </div>
@@ -226,7 +230,7 @@ function Home() {
             <div className="col-span-6 lg:col-span-4">
               <div className="grid grid-cols-1 item-center sm:grid-cols-2 xl:grid-cols-4 lg:grid-cols-2 gap-2">
                 {books?.slice(0, 8).map((item, index) => (
-                  <Box book={item} />
+                  <Box book={item} key={`g-${index}`} />
                 ))}
               </div>
             </div>
@@ -239,9 +243,10 @@ function Home() {
                   <h3 className="font-bold text-white text-3xl">Kitoblarni</h3>
                   <button
                     type="button"
-                    class="text-gray bg-white hover:bg-[#F65D4E] hover:text-white font-bold rounded-3xl text-sm px-5 py-3 me-2 mb-2"
+                    className="text-gray bg-white hover:bg-[#F65D4E] hover:text-white font-bold rounded-3xl text-sm px-5 py-3 me-2 mb-2"
                   >
-                    Xarid qilish <i class="fa-solid fa-chevron-right ml-5"></i>
+                    Xarid qilish{" "}
+                    <i className="fa-solid fa-chevron-right ml-5"></i>
                   </button>
                 </NavLink>
               </div>
@@ -344,9 +349,10 @@ function Home() {
                   <h3 className="font-bold text-white text-3xl">Kitoblarni</h3>
                   <button
                     type="button"
-                    class="text-gray bg-white hover:bg-[#F65D4E] hover:text-white font-bold rounded-3xl text-sm px-5 py-3 me-2 mb-2"
+                    className="text-gray bg-white hover:bg-[#F65D4E] hover:text-white font-bold rounded-3xl text-sm px-5 py-3 me-2 mb-2"
                   >
-                    Xarid qilish <i class="fa-solid fa-chevron-right ml-5"></i>
+                    Xarid qilish{" "}
+                    <i className="fa-solid fa-chevron-right ml-5"></i>
                   </button>
                 </NavLink>
               </div>
@@ -360,17 +366,17 @@ function Home() {
                   className="text-white w-max text-nowrap flex items-center bg-[#F65D4E] text-[15px] font-medium rounded-full text-sm px-6 py-4 text-center me-2 mb-2"
                 >
                   Ko'proq Ko'rish
-                  <i class="fa-solid fa-chevron-right ml-5 text-[15px]"></i>
+                  <i className="fa-solid fa-chevron-right ml-5 text-[15px]"></i>
                 </NavLink>
               </div>
               <div className="flex-1 border-b-1 border-gray mx-6 none md:block"></div>
 
               {books?.slice(0, 1).map((item, index) => (
-                <CardBook book={item} key={`p${index}`} />
+                <CardBook book={item} key={`s-${index}`} />
               ))}
               <div className="grid grid-cols-1 md:grid-cols-2">
                 {books?.slice(1, 5).map((item, index) => (
-                  <CardBook book={item} key={`p${index}`} />
+                  <CardBook book={item} key={`g-${index}`} />
                 ))}
               </div>
             </div>
@@ -385,9 +391,9 @@ function Home() {
             <div className="p-8 text-left items-center gap-5 border border-gray rounded-xl flex">
               <button
                 type="button"
-                class="text-gray bg-[#EDEBFC] text-[#7261D4] border rounded-full text-4xl p-4 text-center inline-flex items-center"
+                className="text-gray bg-[#EDEBFC] text-[#7261D4] border rounded-full text-4xl p-4 text-center inline-flex items-center"
               >
-                <i class="fa-regular fa-book"></i>
+                <i className="fa-regular fa-book"></i>
               </button>
               <div>
                 <h3 className="text-xl font-semibold">15,254</h3>
@@ -397,9 +403,9 @@ function Home() {
             <div className="p-8 text-left items-center gap-5 border border-gray rounded-xl flex">
               <button
                 type="button"
-                class="text-gray bg-[#E9F9FD] text-[#4DC1DB] border rounded-full text-4xl p-4 text-center inline-flex items-center"
+                className="text-gray bg-[#E9F9FD] text-[#4DC1DB] border rounded-full text-4xl p-4 text-center inline-flex items-center"
               >
-                <i class="fa-regular fa-people-simple"></i>
+                <i className="fa-regular fa-people-simple"></i>
               </button>
               <div>
                 <h3 className="text-xl font-semibold">1,287</h3>
@@ -409,9 +415,9 @@ function Home() {
             <div className="p-8 text-left items-center gap-5 border border-gray rounded-xl flex">
               <button
                 type="button"
-                class="text-gray bg-[#E8F6E1] text-[#72C949] border rounded-full text-4xl p-4 text-center inline-flex items-center"
+                className="text-gray bg-[#E8F6E1] text-[#72C949] border rounded-full text-4xl p-4 text-center inline-flex items-center"
               >
-                <i class="fa-regular fa-book"></i>
+                <i className="fa-regular fa-book"></i>
               </button>
               <div>
                 <h3 className="text-xl font-semibold">7,589</h3>
@@ -421,9 +427,9 @@ function Home() {
             <div className="p-8 text-left items-center gap-5 border border-gray rounded-xl flex">
               <button
                 type="button"
-                class="text-gray bg-[#FBF1E6] text-[#FA8C17] border rounded-full text-4xl p-4 text-center inline-flex items-center"
+                className="text-gray bg-[#FBF1E6] text-[#FA8C17] border rounded-full text-4xl p-4 text-center inline-flex items-center"
               >
-                <i class="fa-regular fa-face-smile"></i>
+                <i className="fa-regular fa-face-smile"></i>
               </button>
               <div>
                 <h3 className="text-xl font-semibold">97%</h3>
