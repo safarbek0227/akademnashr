@@ -8,7 +8,6 @@ export default function CardBook(props) {
           src={props.book?.imageLinks?.thumbnail}
         />
         <div className="flex col-span-3 flex-col justify-between p-4 leading-normal">
-        <a href="#" className="w-full">
           <NavLink
               to={`/shop/${props.book?.id}`}
               >
@@ -16,7 +15,6 @@ export default function CardBook(props) {
                 {props.book.title}
               </h5>
           </NavLink>
-        </a>
         <p className="mb-3 font-semibold text-sm md:text-lg text-[#F65D4E]">{props.book.currencyCode} { props.book.currencyCode && ":"} {props.book.price}</p>
         </div>
     </div>

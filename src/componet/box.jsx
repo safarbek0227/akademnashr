@@ -2,12 +2,15 @@ import { NavLink } from "react-router-dom";
 export default function box(props) {
   return (
     <div className="max-w-sm my-2 relative bg-white border-r-2 border-gray-200  dark:bg-gray-800 dark:border-gray-700">
-      <a href="#">
+      <NavLink
+          to={`/shop/${props.book.id}`} 
+          className=""
+          >
         <img
           className="rounded-t-lg object-contain h-[250px] w-11/12 m-3 drop-shadow"
           src={props.book?.imageLinks?.smallThumbnail}
         />
-      </a>
+      </NavLink>
       <div className="p-5">
         <NavLink
           to={`/shop/${props.book.id}`} 
